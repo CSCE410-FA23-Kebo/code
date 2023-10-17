@@ -2,10 +2,10 @@
 # This program reads and prints an integer
 
 .data
-prompt:     .asciiz "Enter an integer: "
+prompt:     .asciiz "Enter an integer: " # This is a constant string
 result_msg: .asciiz "The result is: "
 
-.text
+.text # Code entry point
 .globl _start
 
 # Syscall numbers
@@ -14,10 +14,11 @@ SYS_PRINT_INT = 1
 SYS_EXIT = 10
 
 _start:
-    # Print the prompt
+    # Print the prompt | using multiple argument registers
     li   a0, SYS_PRINT_INT
     la   a1, prompt
     li   a2, 18  # Length of the prompt string
+    # SYS_PRINT prompt 18
     ecall
 
     # Read an integer from the user
