@@ -10,7 +10,7 @@ int main()
     double pi = 0.0, sum[NUM_THREADS][PAD];
     double start1, end1, start2, end2;
 
-    step = 1.0 / (double)num_steps;
+    step = 1.0 / (double)num_steps; // The large the number of steps the more precise the estimate is
 
     // ##### START OF SECTION 1 #####
     start1 = chrono::duration_cast<chrono::nanoseconds>(chrono::high_resolution_clock::now().time_since_epoch()).count();
@@ -20,13 +20,13 @@ int main()
     // create n threads and add them to a vector of threads
     for (int i = 0; i < nthreads; i++)
     {
-        threads1.push_back(thread(single_sum_thread, i, nthreads, sum));
+        threads1.push_back(thread(single_sum_thread, i, nthreads, sum)); // When a thread is created --- Wait for it to return (join())
     }
 
     // join the threads with the main thread
     for (int i = 0; i < nthreads; i++)
     {
-        threads1[i].join();
+        threads1[i].join(); // Waits on a thread the finish
     }
     end1 = chrono::duration_cast<chrono::nanoseconds>(chrono::high_resolution_clock::now().time_since_epoch()).count();
     // ##### END OF SECTION 1 #####

@@ -30,7 +30,7 @@ void* multi(void* arg)
 
 	for (int j = 0; j < MAX; j++) 
 	for (int k = 0; k < MAX; k++) 
-		matC[i][j] += matA[i][k] * matB[k][j];
+		matC[i][j] += matA[i][k] * matB[k][j]; // rows calculation
 
 	return NULL;
 }

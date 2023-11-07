@@ -14,16 +14,16 @@ using namespace std;
 // Maximum size of matrix
 #define MAX 4
 
-int matA[MAX][MAX];
-int matB[MAX][MAX];
-int matC[MAX][MAX];
+int matA[MAX][MAX]; // Matrice 1
+int matB[MAX][MAX]; // Matrice 2
+int matC[MAX][MAX]; // Destination matrice
 
 // Function to multiply two matrices
 void multiplyMatrices() {
     for (int i = 0; i < MAX; i++) {
         for (int j = 0; j < MAX; j++) {
             matC[i][j] = 0;
-            for (int k = 0; k < MAX; k++) {
+            for (int k = 0; k < MAX; k++) { // MAC
                 matC[i][j] += matA[i][k] * matB[k][j];
             }
         }

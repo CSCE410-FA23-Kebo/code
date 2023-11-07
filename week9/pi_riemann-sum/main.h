@@ -39,8 +39,8 @@ void single_sum_thread(int id, int num_threads, double sum[NUM_THREADS][PAD])
 void pi_sum_thread(int id, double step, double *pi, double sum[NUM_THREADS][PAD])
 {
     // add synchronization here
-    mtx.lock();
+    mtx.lock();  // Acquire a mutex
     *pi += sum[id][0] * step;
-    mtx.unlock();
+    mtx.unlock(); // Release
     sleep(1); // simulate a long running task
 }
